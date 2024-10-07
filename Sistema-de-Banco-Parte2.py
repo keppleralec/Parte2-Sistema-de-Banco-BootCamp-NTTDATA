@@ -1,5 +1,5 @@
 from xml.sax.saxutils import escape
-
+#Alteração Teste
 menu = """
     [1] Depositar
     [2] Sacar
