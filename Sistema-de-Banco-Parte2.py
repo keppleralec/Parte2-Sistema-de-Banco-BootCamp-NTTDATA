@@ -12,23 +12,23 @@ extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
 
-def sacar(saldo, extrato,valor_saque, limite,numero_saques,LIMITE_SAQUES):
+def sacar(saldo, extrato, limite,numero_saques,LIMITE_SAQUES):
     print("============== SACAR ==============")
     if numero_saques < LIMITE_SAQUES:
-        numero_saques += 1
+        print(numero_saques)
         valor_saque = float(input("Digite o valor para saque: "))
         if valor_saque > saldo:
-            print("Operação invalida, valor menor que o Saldo!")
+            print("Operação invalida, valor maior que o Saldo!")
         elif valor_saque > limite:
-            print("O limite maximo para saque é de: R$ 500,00")
+            print("O LIMITE MAXIMO DE SAQUE É: R$ 500,00")
         else:
+            numero_saques += 1
             saldo -= valor_saque
             extrato += f"Saque: -R$ {valor_saque}\n"
             print("Valor sacado com sucesso!")
     else:
-        print("O limite de saques são 3x ao dia!")
-    return saldo, extrato
-
+        print("O LIMITE DE SAQUES SÃO 3x AO DIA!!!!")
+    return saldo, extrato, numero_saques
 
 while True:
     opcao = input(menu)
@@ -44,9 +44,10 @@ while True:
             print("Valor depositado com sucesso!")
 
     elif opcao == "2":
-        saldo, extrato = sacar(saldo, extrato,valor_saque, limite,numero_saques, LIMITE_SAQUES)
+        saldo, extrato, numero_saques = sacar(saldo, extrato, limite,numero_saques, LIMITE_SAQUES)
         print(f"Saldo Atual: {saldo}")
         print(f"\nExtrato: \n{extrato}")
+        
 
     elif opcao == "3":
         print("=== Extrato ===")
