@@ -12,6 +12,17 @@ extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
 
+def depositar(saldo,extrato, /):
+    print("=== Deposito ===")
+    valor_deposito = float(input("Digite o valor para Deposito: "))
+    if valor_deposito <= 0:
+        print("Valor invalido, tente novamente!")
+    else:
+        saldo += valor_deposito
+        extrato += f"Depósito: +R$ {valor_deposito}\n"
+        print("Valor depositado com sucesso!")
+    return saldo, extrato
+
 def sacar(*,saldo, extrato, limite, numero_saques, LIMITE_SAQUES):
     print("============== SACAR ==============")
     if numero_saques < LIMITE_SAQUES:
@@ -28,17 +39,6 @@ def sacar(*,saldo, extrato, limite, numero_saques, LIMITE_SAQUES):
     else:
         print("O LIMITE DE SAQUES SÃO 3x AO DIA!!!!")
     return saldo, extrato, numero_saques
-
-def depositar(saldo,extrato, /):
-    print("=== Deposito ===")
-    valor_deposito = float(input("Digite o valor para Deposito: "))
-    if valor_deposito <= 0:
-        print("Valor invalido, tente novamente!")
-    else:
-        saldo += valor_deposito
-        extrato += f"Depósito: +R$ {valor_deposito}\n"
-        print("Valor depositado com sucesso!")
-    return saldo, extrato
 
 def mostrarExtrato(saldo,*,extrato):
     print("=== Extrato ===")
